@@ -51,7 +51,7 @@ class WeatherHero extends StatelessWidget {
                     children: [
                   Text('$temp°C',
                       style: const TextStyle(
-                          fontSize: 44,
+                          fontSize: 50,
                           color: Colors.white,
                           fontWeight: FontWeight.bold)),
                   Text(summary, style: const TextStyle(color: Colors.white))

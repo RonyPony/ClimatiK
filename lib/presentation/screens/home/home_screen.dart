@@ -41,9 +41,9 @@ class HomeScreen extends ConsumerWidget {
             IconButton(
                 onPressed: () => context.push('/settings'),
                 icon: const Icon(Icons.settings)),
-            IconButton(
-                onPressed: () => context.push('/login'),
-                icon: const Icon(Icons.person))
+            // IconButton(
+            //     onPressed: () => context.push('/login'),
+            //     icon: const Icon(Icons.person))
           ]),
           body: WeatherMoodBackground(
             mood: mood,
@@ -53,7 +53,7 @@ class HomeScreen extends ConsumerWidget {
                 Text(v.city.name,
                     style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 28,
+                        fontSize: 30,
                         fontWeight: FontWeight.w700)),
                 WeatherHero(
                     temp: current.temp2m,
