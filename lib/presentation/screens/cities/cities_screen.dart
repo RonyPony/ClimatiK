@@ -32,9 +32,10 @@ class _CitiesScreenState extends ConsumerState<CitiesScreen> {
         .toList();
 
     final selectedNames = saved.map((e) => e.name).toSet();
-    final selected = filtered.where((c) => selectedNames.contains(c.name));
-    final unselected = filtered.where((c) => !selectedNames.contains(c.name));
-    final ordered = [...selected, ...unselected];
+    final selected =
+        filtered.where((c) => selectedNames.contains(c.name)).toList();
+    final unselected =
+        filtered.where((c) => !selectedNames.contains(c.name)).toList();
 
     return Scaffold(
       appBar: AppBar(title: const Text('Ciudades')),
@@ -49,39 +50,63 @@ class _CitiesScreenState extends ConsumerState<CitiesScreen> {
             ),
           ),
           const SizedBox(height: 12),
-          if (ordered.isEmpty)
+          if (selected.isEmpty && unselected.isEmpty)
             const EmptyCitiesState()
-          else
-            ...ordered.map(
-              (c) {
-                final isAdded = selectedNames.contains(c.name);
-                return Card(
-                  child: ListTile(
-                    title: Text(c.name),
-                    subtitle: isAdded
-                        ? const Text('Agregada a tus ciudades')
-                        : const Text('Toca + para agregarla'),
-                    onTap: isAdded
-                        ? () => context.push('/city/${c.name}/${c.lat}/${c.lon}')
-                        : null,
-                    trailing: isAdded
-                        ? IconButton(
-                            icon: const Icon(Icons.check_circle),
-                            color: Theme.of(context).colorScheme.primary,
-                            onPressed: () => ref
-                                .read(savedCitiesProvider.notifier)
-                                .remove(c.name),
-                          )
-                        : IconButton(
-                            icon: const Icon(Icons.add_circle_outline),
-                            onPressed: () =>
-                                ref.read(savedCitiesProvider.notifier).add(c),
-                          ),
-                  ),
-                );
-              },
-            ),
+          else ...[
+            if (selected.isNotEmpty) ...[
+              const Text('Agregadas',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+              const SizedBox(height: 8),
+              ...selected.map((c) => _CityTile(city: c, isAdded: true)),
+            ],
+            if (selected.isNotEmpty && unselected.isNotEmpty) ...[
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 12),
+                child: Divider(height: 1),
+              ),
+            ],
+            if (unselected.isNotEmpty) ...[
+              const Text('Disponibles',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+              const SizedBox(height: 8),
+              ...unselected.map((c) => _CityTile(city: c, isAdded: false)),
+            ],
+          ],
         ],
+      ),
+    );
+  }
+}
+
+
+class _CityTile extends ConsumerWidget {
+  const _CityTile({required this.city, required this.isAdded});
+
+  final City city;
+  final bool isAdded;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Card(
+      child: ListTile(
+        title: Text(city.name),
+        subtitle: isAdded
+            ? const Text('Agregada a tus ciudades')
+            : const Text('Toca + para agregarla'),
+        onTap: isAdded
+            ? () => context.push('/city/${city.name}/${city.lat}/${city.lon}')
+            : null,
+        trailing: isAdded
+            ? IconButton(
+                icon: const Icon(Icons.check_circle),
+                color: Theme.of(context).colorScheme.primary,
+                onPressed: () =>
+                    ref.read(savedCitiesProvider.notifier).remove(city.name),
+              )
+            : IconButton(
+                icon: const Icon(Icons.add_circle_outline),
+                onPressed: () => ref.read(savedCitiesProvider.notifier).add(city),
+              ),
       ),
     );
   }
