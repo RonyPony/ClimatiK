@@ -25,11 +25,11 @@ class HomeScreen extends ConsumerWidget {
         final listDias = v.forecast.dataSeries.take(max).toList();
         final listDiasFiltered = listDias.sublist(7, max);
         final list = v.forecast.dataSeries.take(8).toList();
-        double now = double.parse(DateTime.now().hour.toString());
-        final current = findClosest(
+        final now = DateTime.now();
+        final current = findClosestDateTime(
           list,
           now,
-          (c) => double.parse(c.timepoint.toString()),
+          (c) => WeatherDisplayMapper.pointDate(v.forecast.init, c.timepoint),
         );
         final mood = WeatherDisplayMapper.mood(current,
             WeatherDisplayMapper.pointDate(v.forecast.init, current.timepoint));
@@ -109,17 +109,17 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
-T findClosest<T>(
+T findClosestDateTime<T>(
   List<T> items,
-  double target,
-  double Function(T item) selector,
+  DateTime target,
+  DateTime Function(T item) selector,
 ) {
   T closest = items.first;
-  double minDiff = (selector(closest) - target).abs();
+  var minDiff = selector(closest).difference(target).inMinutes.abs();
 
   for (final item in items) {
     final value = selector(item);
-    final diff = (value - target).abs();
+    final diff = value.difference(target).inMinutes.abs();
 
     if (diff < minDiff) {
       minDiff = diff;
