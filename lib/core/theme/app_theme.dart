@@ -5,7 +5,9 @@ class AppTheme {
         useMaterial3: true,
         brightness: Brightness.light,
         colorSchemeSeed: Colors.indigo,
-        cardTheme: CardTheme(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22))),
+        cardTheme: CardThemeData(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(22))),
       );
   static ThemeData get dark => ThemeData(
         useMaterial3: true,
