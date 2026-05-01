@@ -5,7 +5,7 @@ import '../../../domain/entities/entities.dart';
 import '../../controllers/providers.dart';
 import '../../widgets/weather_widgets.dart';
 
-const mockCities = [
+const predefinedCities = [
   City(name: 'Santo Domingo', lat: 18.4861, lon: -69.9312),
   City(name: 'Santiago', lat: 19.4517, lon: -70.6970),
   City(name: 'Punta Cana', lat: 18.5601, lon: -68.3725),
@@ -23,43 +23,66 @@ class CitiesScreen extends ConsumerStatefulWidget {
 
 class _CitiesScreenState extends ConsumerState<CitiesScreen> {
   String q = '';
+
   @override
   Widget build(BuildContext context) {
     final saved = ref.watch(savedCitiesProvider);
-    final suggestions = mockCities
+    final filtered = predefinedCities
         .where((c) => c.name.toLowerCase().contains(q.toLowerCase()))
         .toList();
+
+    final selectedNames = saved.map((e) => e.name).toSet();
+    final selected = filtered.where((c) => selectedNames.contains(c.name));
+    final unselected = filtered.where((c) => !selectedNames.contains(c.name));
+    final ordered = [...selected, ...unselected];
+
     return Scaffold(
-        appBar: AppBar(title: const Text('Agregar ciudad')),
-        body: ListView(padding: const EdgeInsets.all(16), children: [
+      appBar: AppBar(title: const Text('Ciudades')),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
           TextField(
-              onChanged: (v) => setState(() => q = v),
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.search),
-                  hintText: 'Buscar ciudad por nombre')),
-          const SizedBox(height: 8),
-          ...suggestions.map((c) => Card(
-              child: ListTile(
-                  title: Text(c.name),
-                  trailing: FilledButton(
-                      onPressed: () =>
-                          ref.read(savedCitiesProvider.notifier).add(c),
-                      child: const Text('Agregar'))))),
+            onChanged: (v) => setState(() => q = v),
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.search),
+              hintText: 'Buscar ciudad',
+            ),
+          ),
           const SizedBox(height: 12),
-          const Text('Tus ciudades',
-              style: TextStyle(fontWeight: FontWeight.bold)),
-          if (saved.isEmpty) const EmptyCitiesState(),
-          ...saved.map((c) => Card(
-              child: ListTile(
-                  title: Text(c.name),
-                  subtitle: const Text('Pronóstico disponible'),
-                  onTap: () =>
-                      context.push('/city/${c.name}/${c.lat}/${c.lon}'),
-                  trailing: IconButton(
-                      icon: const Icon(Icons.delete_outline),
-                      onPressed: () => ref
-                          .read(savedCitiesProvider.notifier)
-                          .remove(c.name)))))
-        ]));
+          if (ordered.isEmpty)
+            const EmptyCitiesState()
+          else
+            ...ordered.map(
+              (c) {
+                final isAdded = selectedNames.contains(c.name);
+                return Card(
+                  child: ListTile(
+                    title: Text(c.name),
+                    subtitle: isAdded
+                        ? const Text('Agregada a tus ciudades')
+                        : const Text('Toca + para agregarla'),
+                    onTap: isAdded
+                        ? () => context.push('/city/${c.name}/${c.lat}/${c.lon}')
+                        : null,
+                    trailing: isAdded
+                        ? IconButton(
+                            icon: const Icon(Icons.check_circle),
+                            color: Theme.of(context).colorScheme.primary,
+                            onPressed: () => ref
+                                .read(savedCitiesProvider.notifier)
+                                .remove(c.name),
+                          )
+                        : IconButton(
+                            icon: const Icon(Icons.add_circle_outline),
+                            onPressed: () =>
+                                ref.read(savedCitiesProvider.notifier).add(c),
+                          ),
+                  ),
+                );
+              },
+            ),
+        ],
+      ),
+    );
   }
 }

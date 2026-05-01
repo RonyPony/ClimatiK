@@ -32,7 +32,8 @@ class SavedCitiesController extends StateNotifier<List<City>> {
   Future<void> load() async => state =
       (await _storage.readList(_k)).map((e) => CityModel.fromJson(e)).toList();
   Future<void> add(City city) async {
-    state = [...state, city];
+    if (state.any((c) => c.name == city.name)) return;
+    state = [city, ...state];
     await _storage.writeList(
         _k,
         state
@@ -47,7 +48,12 @@ class SavedCitiesController extends StateNotifier<List<City>> {
   }
 
   Future<void> remove(String name) async {
-    state = [];
-    await _storage.remove(name);
+    state = state.where((c) => c.name != name).toList();
+    await _storage.writeList(
+        _k,
+        state
+            .map(
+                (e) => CityModel(name: e.name, lat: e.lat, lon: e.lon).toJson())
+            .toList());
   }
 }
