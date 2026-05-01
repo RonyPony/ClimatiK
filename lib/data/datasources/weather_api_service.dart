@@ -17,8 +17,7 @@ class WeatherApiService {
       'output': 'json',
       'tzshift': 0,
     });
-    print(response.data);
-    Map<String, dynamic> dd = jsonDecode(response.data);
-    return WeatherForecastModel.fromJson(dd);
+    Map<String, dynamic> data = jsonDecode(response.data);
+    return WeatherForecastModel.fromJson(data);
   }
 }
