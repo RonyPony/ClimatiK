@@ -1,10 +1,8 @@
 import 'package:climatik/core/utils/weather_display_mapper.dart';
 import 'package:climatik/presentation/widgets/weather_widgets.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../core/utils/weather_mapper.dart';
 import '../../controllers/providers.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -34,17 +32,20 @@ class HomeScreen extends ConsumerWidget {
         final mood = WeatherDisplayMapper.mood(current,
             WeatherDisplayMapper.pointDate(v.forecast.init, current.timepoint));
         return Scaffold(
-          appBar: AppBar(title: const Text('Climatik'), actions: [
-            IconButton(
-                onPressed: () => context.push('/cities'),
-                icon: const Icon(Icons.location_city)),
-            IconButton(
-                onPressed: () => context.push('/settings'),
-                icon: const Icon(Icons.settings)),
-            // IconButton(
-            //     onPressed: () => context.push('/login'),
-            //     icon: const Icon(Icons.person))
-          ]),
+          appBar: AppBar(
+              title: Image.asset('assets/nombre.png',
+                  height: 64, fit: BoxFit.contain),
+              actions: [
+                IconButton(
+                    onPressed: () => context.push('/cities'),
+                    icon: const Icon(Icons.location_city)),
+                IconButton(
+                    onPressed: () => context.push('/settings'),
+                    icon: const Icon(Icons.settings)),
+                // IconButton(
+                //     onPressed: () => context.push('/login'),
+                //     icon: const Icon(Icons.person))
+              ]),
           body: WeatherMoodBackground(
             mood: mood,
             child: RefreshIndicator(

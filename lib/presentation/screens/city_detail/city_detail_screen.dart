@@ -15,14 +15,16 @@ class CityDetailScreen extends ConsumerWidget {
     return FutureBuilder(
       future: ref.read(weatherRepoProvider).getWeather(lat, lon),
       builder: (_, s) {
-        if (s.hasError)
+        if (s.hasError) {
           return Scaffold(
               appBar: AppBar(title: Text(name)),
               body: const Center(child: Text('Error al cargar clima')));
-        if (!s.hasData)
+        }
+        if (!s.hasData) {
           return Scaffold(
               appBar: AppBar(title: Text(name)),
               body: const Center(child: CircularProgressIndicator()));
+        }
         final list = s.data!.dataSeries.take(8).toList();
         final now = DateTime.now();
         final current = findClosestDateTime(
@@ -40,7 +42,7 @@ class CityDetailScreen extends ConsumerWidget {
                   WeatherHero(
                       temp: current.temp2m,
                       summary:
-                          '${WeatherDisplayMapper.cloudText(current.cloudcover)}',
+                          WeatherDisplayMapper.cloudText(current.cloudcover),
                       mood: mood),
                   SizedBox(
                       height: 160,

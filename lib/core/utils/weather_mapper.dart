@@ -1,16 +1,17 @@
-import 'package:intl/intl.dart';
 import '../../domain/entities/entities.dart';
 
 class WeatherMapper {
   static WeatherMood moodFrom(WeatherPoint point, DateTime time) {
     final hour = time.hour;
     if (hour >= 19 || hour <= 5) return WeatherMood.night;
-    if (point.liftedIndex <= -4 && point.precType == 'rain')
+    if (point.liftedIndex <= -4 && point.precType == 'rain') {
       return WeatherMood.stormy;
+    }
     if (point.precType == 'rain') return WeatherMood.rainy;
     if (point.cloudcover >= 6) return WeatherMood.cloudy;
-    if (point.cloudcover <= 2 && point.precType == 'none')
+    if (point.cloudcover <= 2 && point.precType == 'none') {
       return WeatherMood.clear;
+    }
     return WeatherMood.sunny;
   }
 

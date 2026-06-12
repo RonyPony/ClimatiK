@@ -38,7 +38,7 @@ class WeatherHero extends StatelessWidget {
   final WeatherMood mood;
   @override
   Widget build(BuildContext context) => Card(
-      color: Colors.white.withOpacity(.15),
+      color: Colors.white.withValues(alpha: .15),
       child: Padding(
           padding: const EdgeInsets.all(18),
           child: Row(children: [
@@ -70,7 +70,7 @@ class HourlyForecastCard extends StatelessWidget {
     final mood = WeatherDisplayMapper.mood(
         point, WeatherDisplayMapper.pointDate(init, point.timepoint));
     return Card(
-        color: Colors.white.withOpacity(.15),
+        color: Colors.white.withValues(alpha: .15),
         child: SizedBox(
             width: 160,
             child: Padding(
