@@ -1,4 +1,4 @@
-package com.example.climatik
+package com.tuquizz.climatik
 
 import io.flutter.embedding.android.FlutterActivity
 
