@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Climatik es una app de clima moderna para consultar pronosticos por ubicacion, guardar ciudades y entender las condiciones de las proximas horas con claridad."
+    />
+    <title>Climatik | Clima claro para decidir mejor</title>
+    <link rel="icon" href="assets/logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="#inicio" aria-label="Climatik inicio">
+        <img src="assets/logo.png" alt="" class="brand-mark" />
+        <img src="assets/nombre.png" alt="Climatik" class="brand-word" />
+      </a>
+      <nav class="main-nav" aria-label="Navegacion principal">
+        <a href="#caracteristicas">Caracteristicas</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#app">App</a>
+        <a href="#beneficios">Beneficios</a>
+      </nav>
+      <a class="nav-cta" href="#lanzamiento">Ver lanzamiento</a>
+    </header>
+
+    <main>
+      <section class="hero section" id="inicio">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Lanzamiento oficial</span>
+          <h1>Climatik convierte el clima en decisiones claras.</h1>
+          <p>
+            Una experiencia meteorologica moderna para ver tu ubicacion,
+            guardar ciudades clave y leer el pronostico por horas con un
+            lenguaje simple, visual y accionable.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#app">Explorar la app</a>
+            <a class="button secondary" href="#caracteristicas"
+              >Conocer caracteristicas</a
+            >
+          </div>
+          <dl class="hero-metrics" aria-label="Resumen de Climatik">
+            <div>
+              <dt>8+</dt>
+              <dd>bloques horarios destacados</dd>
+            </div>
+            <div>
+              <dt>7</dt>
+              <dd>ciudades listas para seguir</dd>
+            </div>
+            <div>
+              <dt>24/7</dt>
+              <dd>consulta rapida de condiciones</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-visual reveal" data-tilt>
+          <div class="weather-orbit" aria-hidden="true">
+            <span class="orbit-sun"></span>
+            <span class="orbit-cloud"></span>
+            <span class="orbit-rain"></span>
+          </div>
+          <article class="phone-frame" aria-label="Vista previa de Climatik">
+            <div class="phone-top">
+              <img src="assets/nombre.png" alt="Climatik" />
+              <span>Santo Domingo</span>
+            </div>
+            <div class="weather-panel sunny">
+              <span class="status-pill">Hoy 3:00 PM</span>
+              <div class="temp-row">
+                <strong>30°C</strong>
+                <span class="sun-icon" aria-hidden="true"></span>
+              </div>
+              <p>Cielo despejado con brisa ligera desde el NE.</p>
+            </div>
+            <div class="forecast-strip" aria-label="Pronostico por horas">
+              <div>
+                <span>6 PM</span>
+                <strong>28°</strong>
+                <small>Sin lluvia</small>
+              </div>
+              <div>
+                <span>9 PM</span>
+                <strong>26°</strong>
+                <small>Noche</small>
+              </div>
+              <div>
+                <span>12 AM</span>
+                <strong>25°</strong>
+                <small>Calma</small>
+              </div>
+            </div>
+            <div class="insight-row">
+              <span>Que esperar</span>
+              <p>Condiciones estables durante las proximas horas.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="logo-band reveal" aria-label="Identidad de Climatik">
+        <img src="assets/logo-nombre.png" alt="Logo oficial de Climatik" />
+      </section>
+
+      <section class="section intro" id="lanzamiento">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Que es Climatik</span>
+          <h2>Una app del clima pensada para entender rapido lo que viene.</h2>
+          <p>
+            Climatik toma datos meteorologicos, ubicacion y ciudades favoritas
+            para presentar una lectura directa: temperatura, cielo, viento,
+            humedad, precipitacion y condiciones de visibilidad.
+          </p>
+        </div>
+      </section>
+
+      <section class="section features" id="caracteristicas">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Caracteristicas principales</span>
+          <h2>Todo lo esencial sin ruido.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-icon location-icon" aria-hidden="true"></div>
+            <h3>Ubicacion automatica</h3>
+            <p>
+              Detecta tu posicion actual cuando el permiso esta disponible y
+              usa Santo Domingo como referencia confiable de respaldo.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon timeline-icon" aria-hidden="true"></div>
+            <h3>Pronostico por horas</h3>
+            <p>
+              Presenta las proximas horas en tarjetas compactas con temperatura,
+              precipitacion, viento y direccion.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon city-icon" aria-hidden="true"></div>
+            <h3>Ciudades guardadas</h3>
+            <p>
+              Agrega y consulta ciudades como Santo Domingo, Santiago, Punta
+              Cana, Miami, Nueva York y Madrid.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon mood-icon" aria-hidden="true"></div>
+            <h3>Fondos dinamicos</h3>
+            <p>
+              La interfaz cambia de atmosfera segun el clima: despejado,
+              nublado, lluvia, tormenta o noche.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon insight-icon" aria-hidden="true"></div>
+            <h3>Insights claros</h3>
+            <p>
+              Traduce datos tecnicos en frases comprensibles sobre cielo,
+              viento, humedad y visibilidad.
+            </p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon settings-icon" aria-hidden="true"></div>
+            <h3>Preferencias flexibles</h3>
+            <p>
+              Incluye tema claro, oscuro o del sistema y control de animaciones
+              desde la configuracion.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section flow" id="como-funciona">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Como funciona</span>
+          <h2>Del dato meteorologico a una lectura visual en segundos.</h2>
+        </div>
+        <div class="flow-steps">
+          <article class="flow-step reveal">
+            <span>01</span>
+            <h3>Detecta o eliges ciudad</h3>
+            <p>
+              Climatik usa tu ubicacion o una ciudad guardada para definir el
+              punto de consulta.
+            </p>
+          </article>
+          <article class="flow-step reveal">
+            <span>02</span>
+            <h3>Consulta el pronostico</h3>
+            <p>
+              La app obtiene datos en unidades metricas y organiza la serie por
+              horas y proximos dias.
+            </p>
+          </article>
+          <article class="flow-step reveal">
+            <span>03</span>
+            <h3>Resume lo importante</h3>
+            <p>
+              Temperatura, lluvia, viento y cielo se convierten en tarjetas,
+              estados visuales e insights faciles de leer.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section app-showcase" id="app">
+        <div class="app-copy reveal">
+          <span class="eyebrow">Vista de producto</span>
+          <h2>Una interfaz que cambia con el cielo.</h2>
+          <p>
+            La experiencia central combina una pantalla hero con temperatura
+            actual, un carrusel de pronostico y tarjetas de contexto para saber
+            que esperar antes de salir, viajar o planificar el dia.
+          </p>
+          <ul class="check-list">
+            <li>Lectura actual y pronostico cercano.</li>
+            <li>Tarjetas horizontales para comparar horarios.</li>
+            <li>Mensajes en espanol para condiciones meteorologicas.</li>
+            <li>Actualizacion manual con gesto de refrescar.</li>
+          </ul>
+        </div>
+        <div class="screens-grid reveal" aria-label="Pantallas simuladas">
+          <article class="mini-screen cloudy">
+            <div class="screen-head">
+              <span></span>
+              <strong>Ciudades</strong>
+            </div>
+            <div class="search-line"></div>
+            <p>Agregadas</p>
+            <div class="city-row">Santo Domingo <b>✓</b></div>
+            <div class="city-row">Miami <b>✓</b></div>
+            <p>Disponibles</p>
+            <div class="city-row muted">Madrid <b>+</b></div>
+          </article>
+          <article class="mini-screen night">
+            <div class="screen-head">
+              <span></span>
+              <strong>Madrid</strong>
+            </div>
+            <div class="large-temp">18°C</div>
+            <p>Casi despejado</p>
+            <div class="chart-lines" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </article>
+          <article class="mini-screen rainy">
+            <div class="screen-head">
+              <span></span>
+              <strong>Config.</strong>
+            </div>
+            <div class="toggle-row">Tema sistema <span></span></div>
+            <div class="toggle-row">Tema oscuro <span></span></div>
+            <div class="toggle-row active">Animaciones <span></span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section benefits" id="beneficios">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Beneficios</span>
+          <h2>Creada para usuarios que necesitan contexto, no solo numeros.</h2>
+        </div>
+        <div class="benefit-layout">
+          <article class="benefit-copy reveal">
+            <h3>Menos friccion antes de tomar decisiones cotidianas.</h3>
+            <p>
+              Climatik reduce la lectura del clima a senales utiles: que tan
+              despejado estara, si habra lluvia, como se mueve el viento y que
+              ciudades importan para tu rutina.
+            </p>
+          </article>
+          <div class="benefit-list">
+            <article class="benefit-item reveal">
+              <strong>Para moverte mejor</strong>
+              <p>Consulta antes de salir y detecta cambios cercanos.</p>
+            </article>
+            <article class="benefit-item reveal">
+              <strong>Para comparar destinos</strong>
+              <p>Guarda ciudades y revisa cada una sin repetir busquedas.</p>
+            </article>
+            <article class="benefit-item reveal">
+              <strong>Para leer rapido</strong>
+              <p>Insight cards convierten datos tecnicos en lenguaje claro.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tech-strip reveal" aria-label="Tecnologias">
+        <span>Flutter</span>
+        <span>Riverpod</span>
+        <span>Dio</span>
+        <span>Geolocator</span>
+        <span>Shared Preferences</span>
+        <span>7Timer API</span>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="footer-brand" href="#inicio">
+          <img src="assets/logo.png" alt="" />
+          <span>Climatik</span>
+        </a>
+        <p>Clima claro, visual y cercano para planificar mejor cada dia.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#caracteristicas">Caracteristicas</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#app">App</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
