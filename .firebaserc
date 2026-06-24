@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "climati-k"
-  }
+    "default": "climati-k",
+    "prod": "climati-k"
+  },
+  "targets": {},
+  "etags": {}
 }
